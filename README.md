@@ -42,6 +42,16 @@ curl -H "Content-Type: application/json" \
 -d '{"firstName":"Fred","lastName":"Smith","address":"232 Oak St.",\
 "city":"Smallville", "state":"OA","zipCode":"555444"}'
 ```
+Response:
+```bash
+HTTP/1.1 200 
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Sun, 20 Aug 2023 17:09:47 GMT
+
+{"id":1,"lastName":"Smith","firstName":"Fred","address":
+"232 Oak St.","city":"Smallville","state":"OA","zipCode":"555444"}
+```
 
 ### Update an Existing Object
 Update (or create if it doesn't exist) an object using PUT:
@@ -50,6 +60,17 @@ curl -H "Content-Type: application/json" \
 -X PUT http://localhost:8089/api/person/1  \
 -d '{"firstName":"Fred","lastName":"Smith","address":"777 Dark Ave.",\
 "city":"Middletown", "state":"MC","zipCode":"01122"}'
+```
+Response:
+```bash
+HTTP/1.1 200 
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Sun, 20 Aug 2023 17:12:16 GMT
+
+{"id":1,"lastName":"Smith","firstName":"Fred",
+"address":"777 Dark Ave.","city":"Middletown","state":"MC",
+"zipCode":"01122"}
 ```
 ### Delete an Object
 Delete an object by  its id using DELETE:
@@ -71,4 +92,14 @@ curl -H "Content-Type: application/json-patch+json" \
 {"op":"replace","path":"/state","value":"VM"}, \
 {"op":"replace","path":"/zipCode","value":"77655"}]'
 ```
+Response:
+```bash
+HTTP/1.1 200 
+Content-Type: application/json
+Transfer-Encoding: chunked
+Date: Sun, 20 Aug 2023 17:14:56 GMT
 
+{"id":1,"lastName":"Smith","firstName":"Fred",
+"address":"777 Dark Ave.","city":"Metropolis",
+"state":"VM","zipCode":"77655"}
+```
